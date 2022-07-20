@@ -22,13 +22,12 @@ class CompraController extends Controller
   {
     $formasPagos = PlantillaConfigController::obtenerMediosPago();
     $productos = $request['productos'];
-
     $esCarroCompras = isset($request['btnCarritoCompras']);
     return view(
-      "tenant.p{sages.ventas.realizar-comsra",
-      compact({}
-        'formasPagos'{,
-        'productos',ñ
+      "tenant.pages.ventas.realizar-compra",
+      compact(
+        'formasPagos',
+        'productos',
         'esCarroCompras'
       )
     );
