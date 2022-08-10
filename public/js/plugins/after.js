@@ -35,15 +35,16 @@ $(".input-imagen-banner").on("change", function () {
     const img = new Image();
     const image = this.files[0];
     const banner = $(this).attr("banner");
+    console.log(banner);
     if (!image) return;
     const reader = new FileReader();
     reader.addEventListener("load", function () {
         img.src = reader.result;
         setTimeout(function () {
             const dimensiones =
-                banner != 1
-                    ? dimensionesBanners[banner - 2]
-                    : dimensionesBanners[banner - 1];
+                banner  <= 3
+                    ? dimensionesBanners[1]
+                    : dimensionesBanners[0];
             if (
                 img.naturalHeight != dimensiones.alto &&
                 img.naturalWidth != dimensiones.ancho
@@ -99,9 +100,9 @@ $(".input-imagen-banner").on("change", function () {
         img.src = reader.result;
         setTimeout(function () {
             const dimensiones =
-                banner != 1
-                    ? dimensionesBanners[banner - 2]
-                    : dimensionesBanners[banner - 1];
+                banner  <= 3
+                    ? dimensionesBanners[1]
+                    : dimensionesBanners[0];
             if (
                 img.naturalHeight != dimensiones.alto &&
                 img.naturalWidth != dimensiones.ancho

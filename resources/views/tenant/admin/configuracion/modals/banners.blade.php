@@ -68,7 +68,7 @@
               <p class="card-text"><input style="width: 100%;" type="text" value="{{$configuracion->descripcion_banner_3}}" name="descripcion_banner_3" placeholder="Descripción"></p>
             </div>
           </div>
-          <!-- 
+          <!--
                         <div class="form-group" id="btnAgregarBannerGroup">
                           <button type="button" class="btn btn-success btn-block" id="btnAgregarBanner">Agregar banner</button>
                         </div> -->

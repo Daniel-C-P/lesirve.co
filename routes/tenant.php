@@ -67,7 +67,7 @@ Route::middleware([
   Route::prefix('admin')
     ->middleware('auth.tenant.admin')
     ->group(function () {
-      Route::get('/', [HomeAdminController::class, 'index']);
+    //   Route::get('/', [HomeAdminController::class, 'index']);
       Route::get('home', [HomeAdminController::class, 'index'])
         ->name('tenant.admin.home');
       Route::resource('clientes', ClienteController::class)

@@ -80,6 +80,9 @@
     </ul>
   </li>
   <li>
+    <a class="sidebar-header" href="{{ route('medios-pagos.index') }}"><i data-feather="credit-card"></i><span>Metodos de Pago</span></a>
+  </li>
+  <li>
     <a class="sidebar-header" href="{{ route('tenant.admin.configuracion') }}"><i data-feather="settings"></i><span>Configuracion</span></a>
   </li>
   <li>

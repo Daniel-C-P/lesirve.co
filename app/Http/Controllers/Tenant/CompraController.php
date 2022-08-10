@@ -49,6 +49,8 @@ class CompraController extends Controller
       'direccion' => $cliente['direccion'],
       'total' => 0
     ]);
+
+
     foreach($productosGuardar as $producto){
       $productoEnviar = Producto::find($producto->id);
       $productoEnviar->cantidad = $producto->cantidad;

@@ -92,11 +92,11 @@ $plantilla = PlantillaConfigController::obtenerConfiguracion()->id_plantilla;
               </div>
               <div class="pro-group">
                 <h6 class="product-title">breve descripción</h6>
-                <p>{{ $producto->descripcion_corta }}</p>
+                <p>{!! $producto->descripcion_corta !!}</p>
               </div>
               <div class="pro-group">
                 <h6 class="product-title">información del producto</h6>
-                <div class="formateo">{!! $producto->descripcion_larga !!}</div>
+                <div class="formateo">{!!$producto->descripcion_larga !!}</div>
               </div>
             </div>
           </div>
