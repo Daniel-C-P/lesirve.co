@@ -20,8 +20,9 @@ class DatabaseSeeder extends Seeder
             // UserSeeder::class,
             // ClienteSeeder::class,
             //para los tenant
-            RolTenantSeeder::class,
-            UserTenantSeeder::class,
+            //RolTenantSeeder::class,
+            //UserTenantSeeder::class,
+            BannersSeeder::class,
         ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Tenant\ProductoController;
 use App\Models\Tenant\Categoria;
 use App\Models\Tenant\Configuracione;
+use App\Models\Tenant\Banners;
 use App\Models\Tenant\MediosPago;
 use App\Models\Tenant\Producto;
 use App\Models\Tenant\Servicio;
@@ -14,7 +15,7 @@ class PlantillaConfigController extends Controller
 {
   public function configDefecto()
   {
-    
+
     $categorias = Categoria::paginate();
     $productos = $this->obtenerProductos();
     $listaProductos = array();
@@ -25,7 +26,7 @@ class PlantillaConfigController extends Controller
     foreach ($productos as $producto) {
       array_push($listaProductos[$producto->categoria->categoria], $producto);
     }
-  
+
     return [
       'tenant' => PlantillaConfigController::obtenerConfiguracion(),
       'servicios' => $this->obtenerServicios(),
@@ -39,6 +40,7 @@ class PlantillaConfigController extends Controller
   public static function obtenerConfiguracion()
   {
     $config = Configuracione::first();
+    $banners = Banners::all();
     return (object)[
       'id_plantilla' => $config->id_plantilla,
       'id' => explode('.', $_SERVER['HTTP_HOST'])[0],
@@ -64,6 +66,44 @@ class PlantillaConfigController extends Controller
       'youtube' => $config->youtube,
       'color_primario' => $config->color_p,
       'color_secundario' => $config->color_s,
+
+       'id_banner_4' => $banners[0]['id'] ,
+       'url_banner_4' => $banners[0]['URL_funcion'],
+       'texto_banner_4' => $banners[0]['titulo_imagen'],
+       'boton_banner_4' => $banners[0]['texto_boton'],
+       'imagen_banner_4' => $banners[0]['URL_imagen'],
+
+       'id_banner_5' => $banners[1]['id'] ,
+       'url_banner_5' => $banners[1]['URL_funcion'],
+       'texto_banner_5' => $banners[1]['titulo_imagen'],
+       'boton_banner_5' => $banners[1]['texto_boton'],
+       'imagen_banner_5' => $banners[1]['URL_imagen'],
+
+       'id_banner_6' => $banners[2]['id'] ,
+       'url_banner_6' => $banners[2]['URL_funcion'],
+       'texto_banner_6' => $banners[2]['titulo_imagen'],
+       'boton_banner_6' => $banners[2]['texto_boton'],
+       'imagen_banner_6' => $banners[2]['URL_imagen'],
+
+       'id_banner_7' => $banners[3]['id'] ,
+       'url_banner_7' => $banners[3]['URL_funcion'],
+       'texto_banner_7' => $banners[3]['titulo_imagen'],
+       'boton_banner_7' => $banners[3]['texto_boton'],
+       'imagen_banner_7' => $banners[3]['URL_imagen'],
+
+       'id_banner_8' => $banners[4]['id'] ,
+       'url_banner_8' => $banners[4]['URL_funcion'],
+       'texto_banner_8' => $banners[4]['titulo_imagen'],
+       'boton_banner_8' => $banners[4]['texto_boton'],
+       'imagen_banner_8' => $banners[4]['URL_imagen'],
+
+       'id_banner_9' => $banners[5]['id'] ,
+       'url_banner_9' => $banners[5]['URL_funcion'],
+       'texto_banner_9' => $banners[5]['titulo_imagen'],
+       'boton_banner_9' => $banners[5]['texto_boton'],
+       'imagen_banner_9' => $banners[5]['URL_imagen'],
+
+
     ];
   }
 

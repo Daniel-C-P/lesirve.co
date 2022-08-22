@@ -28,23 +28,36 @@ $(".input-imagen-banner").on("change", function () {
             alto: 620,
         },
         {
-            ancho: 1920,
-            alto: 700,
+            ancho: 1300,
+            alto: 400,
+        },
+        {
+            ancho: 600,
+            alto: 400,
+        },
+        {
+            ancho: 400,
+            alto: 300,
         },
     ];
     const img = new Image();
     const image = this.files[0];
     const banner = $(this).attr("banner");
-    console.log(banner);
     if (!image) return;
     const reader = new FileReader();
     reader.addEventListener("load", function () {
         img.src = reader.result;
+        var dimensiones;
         setTimeout(function () {
-            const dimensiones =
-                banner  <= 3
-                    ? dimensionesBanners[1]
-                    : dimensionesBanners[0];
+            if (banner <= 3 || banner == 6 ) {
+                dimensiones = dimensionesBanners[1];
+            }else if (banner >= 4 && banner < 6 ) {
+
+                dimensiones = dimensionesBanners[2];
+            }else if(banner >= 7){
+                dimensiones = dimensionesBanners[3];
+            }
+
             if (
                 img.naturalHeight != dimensiones.alto &&
                 img.naturalWidth != dimensiones.ancho
@@ -87,8 +100,16 @@ $(".input-imagen-banner").on("change", function () {
             alto: 620,
         },
         {
-            ancho: 1920,
-            alto: 700,
+            ancho: 1300,
+            alto: 400,
+        },
+        {
+            ancho: 600,
+            alto: 400,
+        },
+        {
+            ancho: 400,
+            alto: 300,
         },
     ];
     const img = new Image();
@@ -98,11 +119,17 @@ $(".input-imagen-banner").on("change", function () {
     const reader = new FileReader();
     reader.addEventListener("load", function () {
         img.src = reader.result;
+        var dimensiones;
         setTimeout(function () {
-            const dimensiones =
-                banner  <= 3
-                    ? dimensionesBanners[1]
-                    : dimensionesBanners[0];
+            if (banner <= 3 || banner == 6 ) {
+                dimensiones = dimensionesBanners[1];
+            }else if (banner >= 4 && banner < 6 ) {
+
+                dimensiones = dimensionesBanners[2];
+            }else if(banner >= 7){
+                dimensiones = dimensionesBanners[3];
+            }
+
             if (
                 img.naturalHeight != dimensiones.alto &&
                 img.naturalWidth != dimensiones.ancho

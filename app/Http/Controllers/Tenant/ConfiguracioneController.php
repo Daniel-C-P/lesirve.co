@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenant;
 use App\Http\Controllers\Controller;
 use App\Models\Tenant\Cliente;
 use App\Models\Tenant\Configuracione;
+use App\Models\Tenant\Banners;
 use App\Models\Tenant\Producto;
 use Illuminate\Http\Request;
 use App\Traits\Template;
@@ -25,6 +26,9 @@ class ConfiguracioneController extends Controller
   public function index()
   {
     $configuracion = Configuracione::first();
+    $banners= Banners::all();
+    $banners=json_decode($banners,true);
+    // dd($banners);
     $listaPlantillas = [
       (object)[
         'id' => 'big-deal',
@@ -44,7 +48,7 @@ class ConfiguracioneController extends Controller
     ];
 
     $total_imagenes = count(glob('img/plantillas/{*.jpg}', GLOB_BRACE));
-    return view('tenant.admin.configuracion.index', compact('configuracion', 'total_imagenes', 'listaPlantillas'));
+    return view('tenant.admin.configuracion.index', compact('configuracion', 'total_imagenes', 'listaPlantillas', 'banners'));
   }
 
   //Creamos una configuracion con los valores del tenant
@@ -77,7 +81,65 @@ class ConfiguracioneController extends Controller
       $data['logo'] = ConfiguracioneController::moveImage($request, $this->traerNombre(), 'logo');
     }
 
+    if(isset($data['imagen_banner_4'])){
+        $data['imagen_banner_4'] = ConfiguracioneController::moveImage($request, $this->traerNombre(), 'imagen_banner_4');
+    }
+    if(isset($data['imagen_banner_5'])){
+        $data['imagen_banner_5'] = ConfiguracioneController::moveImage($request, $this->traerNombre(), 'imagen_banner_5');
+    }
+    if(isset($data['imagen_banner_6'])){
+        $data['imagen_banner_6'] = ConfiguracioneController::moveImage($request, $this->traerNombre(), 'imagen_banner_6');
+    }
+    if(isset($data['imagen_banner_7'])){
+        $data['imagen_banner_7'] = ConfiguracioneController::moveImage($request, $this->traerNombre(), 'imagen_banner_7');
+    }
+    if(isset($data['imagen_banner_8'])){
+        $data['imagen_banner_8'] = ConfiguracioneController::moveImage($request, $this->traerNombre(), 'imagen_banner_8');
+    }
+    if(isset($data['imagen_banner_9'])){
+        $data['imagen_banner_9'] = ConfiguracioneController::moveImage($request, $this->traerNombre(), 'imagen_banner_9');
+    }
+
+
+
+    if (array_key_exists('id_banner_4', $data)) {
+      $xx  = " 0 ";
+      $y = 4;
+    for ($x = 0;$x < count($data); $x++){
+        $a = ('id_banner_' .strval($y));
+        $b = ('url_banner_' .strval($y));
+        $c = ('texto_banner_' .strval($y));
+        $d = ('boton_banner_' .strval($y));
+        $e = ('imagen_banner_' .strval($y));
+
+        if ( $y <= 9 ) {
+
+            $xx .= (' id_banner_'.strval($data[$a]));
+            $xx .= (' url_banner_'.strval($data[$b]));
+            $xx .= (' texto_banner_'.strval($data[$c]));
+            $xx .= (' boton_banner_'.strval($data[$d]));
+
+            $ban =  Banners::find($data[$a]);
+            $ban->URL_funcion = $data[$b];
+        	  $ban->titulo_imagen = $data[$c];
+            $ban->texto_boton = $data[$d];
+
+            $f = array_key_exists($e, $data);
+            if ($f) {
+                $xx .= (' imagen_banner_'.strval($data[$e]));
+                $ban->URL_imagen = $data[$e];
+             }
+
+             $ban->save();
+
+            $y++;
+        }
+    }
+  }else{
     $conf->query()->update($data);
+  }
+
+
 
     return redirect()->route('tenant.admin.configuracion')
       ->with('success', 'Se actualizó correctamente la configuración');

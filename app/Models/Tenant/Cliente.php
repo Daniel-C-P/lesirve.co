@@ -24,13 +24,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Cliente extends Authenticatable
 {
   public $timestamps = false;
-    
+
     static $rules = [
 		'telefono' => 'required|max:10',
 		'correo' => 'required|max:80',
 		'nombre' => 'required|max:45',
 		'direccion' => 'required|max:45',
-    'ciudad' => 'required|max:30'
+        'ciudad' => 'required|max:30'
     ];
 
     protected $perPage = 20;
@@ -59,7 +59,7 @@ class Cliente extends Authenticatable
     {
       return $this->contrasenia;
     }
-    
+
     protected $guard = 'cliente';
 
     /**
@@ -85,5 +85,5 @@ class Cliente extends Authenticatable
     {
         return $this->hasMany('App\Models\VentasProducto', 'id_cliente', 'id');
     }
-    
+
 }

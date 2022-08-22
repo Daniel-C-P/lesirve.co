@@ -152,15 +152,18 @@ if (isset($categorias) && count($categorias) > 0) {
   @include('layouts.big-deal.header')
 
   @section('content')
-  @include('layouts.big-deal.banner')
+  @include('layouts.big-deal.slider')
   @include('layouts.big-deal.servicios')
   @include('layouts.big-deal.nuevos-productos')
+  @include('layouts.big-deal.banner-two')
   @include('layouts.big-deal.productos')
+  @include('layouts.big-deal.banner-one')
+  @include('layouts.big-deal.banner-three')
   @show
 
   @include('layouts.big-deal.footer')
 
-  
+
   @include('layouts.big-deal.scripts')
   @yield('js')
 </body>

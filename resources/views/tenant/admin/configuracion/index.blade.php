@@ -32,16 +32,23 @@
               </div>
               <!-- Boton para el modal de banners -->
               <div class="form-group">
+                <a class="btn btn-lg btn-block btn-primary" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalSlider" class="tooltip-top" data-tippy-content="Revisar">
+                  <span>Editar Sliders</span>
+                </a>
+              </div>
+              <div class="form-group">
                 <a class="btn btn-lg btn-block btn-primary" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalBanner" class="tooltip-top" data-tippy-content="Revisar">
-                  <span>Editar banners</span>
+                  <span>Editar Banners</span>
                 </a>
               </div>
 
+
               <!-- Seccion de modales -->
+              @include('tenant.admin.configuracion.modals.sliders')
               @include('tenant.admin.configuracion.modals.banners')
               @include('tenant.admin.configuracion.modals.redes-sociales')
               @include('tenant.admin.configuracion.modals.plantillas')
-              
+
               <!-- Fin seccion modales -->
             </div>
           </div>
