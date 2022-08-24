@@ -92,7 +92,8 @@ Route::middleware([
 
       //Gestión de ventas (Cupones, medios pagos, estados, etc.)
       Route::resource('cupones', CuponeController::class);
-      Route::resource('medios-pagos', MediosPagoController::class);
+      Route::resource('medios-pagos', MediosPagoController::class)->except(["update"]);
+      Route::post('medios-pago', [MediosPagoController::class, 'update'])->name('medios-pagos.update');
       Route::patch('estados/pagos/{pago}', [EstadosPagoController::class, 'update'])->name('tenant.estados.pagos.update');
       Route::resource('estados/pagos', EstadosPagoController::class)
         ->names('tenant.estados.pagos');

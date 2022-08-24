@@ -32,10 +32,12 @@ class MediosPagoController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function create()
+  public function create($request)
   {
+
+    dd($request->all());
     $mediosPago = new MediosPago();
-    return view('tenant.admin.medios-pago.create', compact('mediosPago'));
+    return ('hola');
   }
 
   /**
@@ -46,16 +48,6 @@ class MediosPagoController extends Controller
    */
   public function store(Request $request)
   {
-    request()->validate(MediosPago::$rules);
-    $data = $request->all();
-    if (isset($request['logo'])) {
-      $data['logo'] = MediosPagoController::moveImage($request, $this->traerNombre(), 'logo', "logo-$request[nombre]");
-    }
-    $data['habilitado'] = isset($data['habilitado']);
-    $mediosPago = MediosPago::create($data);
-
-    return redirect()->route('medios-pagos.index')
-      ->with('success', 'MediosPago created successfully.');
   }
 
   /**
@@ -93,18 +85,8 @@ class MediosPagoController extends Controller
    */
   public function update(Request $request, MediosPago $mediosPago)
   {
-    request()->validate(MediosPago::$rules);
-    $data = $request->all();
-    if (isset($request['logo'])) {
-      $data['logo'] = MediosPagoController::moveImage($request, $this->traerNombre(), 'logo', "logo-$request[nombre]");
-    }
-    $data['habilitado'] = isset($data['habilitado']);
 
-    $mediosPago->update($data);
-
-    return redirect()->route('medios-pagos.index')
-      ->with('success', 'MediosPago updated successfully');
-  }
+  }return($request)
 
   /**
    * @param int $id
