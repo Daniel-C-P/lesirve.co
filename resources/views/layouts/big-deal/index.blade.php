@@ -41,48 +41,6 @@ $mediosPagos = PlantillaConfigController::obtenerMediosPago() ?? array(
   ],
 );
 
-$productosNuevos = $productosNuevos ?? [
-  (object)array(
-    'id' => 1,
-    'en_oferta' => false,
-    'nombre' => 'producto 1',
-    'precio' => 1200,
-    'imagen_1' => 'img/big-deal/pets/product/1.jpg',
-    'imagen_2' => 'img/big-deal/pets/product/2.jpg',
-  ),
-  (object)array(
-    'id' => 1,
-    'en_oferta' => false,
-    'nombre' => 'producto 2',
-    'precio' => 500,
-    'imagen_1' => 'img/big-deal/pets/product/1.jpg',
-    'imagen_2' => 'img/big-deal/pets/product/2.jpg',
-  ),
-  (object)array(
-    'id' => 1,
-    'en_oferta' => false,
-    'nombre' => 'producto 3',
-    'precio' => 6000,
-    'imagen_1' => 'img/big-deal/pets/product/1.jpg',
-    'imagen_2' => 'img/big-deal/pets/product/2.jpg',
-  ),
-  (object)array(
-    'id' => 1,
-    'en_oferta' => false,
-    'nombre' => 'producto 4',
-    'precio' => 2100,
-    'imagen_1' => 'img/big-deal/pets/product/1.jpg',
-    'imagen_2' => 'img/big-deal/pets/product/2.jpg',
-  ),
-  (object)array(
-    'id' => 1,
-    'en_oferta' => false,
-    'nombre' => 'producto 5',
-    'precio' => 3200,
-    'imagen_1' => 'img/big-deal/pets/product/1.jpg',
-    'imagen_2' => 'img/big-deal/pets/product/2.jpg',
-  )
-];
 
 $categorias = PlantillaConfigController::obtenerCategorias();
 
@@ -153,8 +111,12 @@ if (isset($categorias) && count($categorias) > 0) {
 
   @section('content')
   @include('layouts.big-deal.slider')
-  @include('layouts.big-deal.servicios')
-  @include('layouts.big-deal.nuevos-productos')
+  @if (count($servicios))
+     @include('layouts.big-deal.servicios')
+  @endif
+  @if (count($productosNuevos))
+     @include('layouts.big-deal.nuevos-productos')
+  @endif
   @include('layouts.big-deal.banner-two')
   @include('layouts.big-deal.productos')
   @include('layouts.big-deal.banner-one')

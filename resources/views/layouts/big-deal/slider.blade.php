@@ -22,7 +22,7 @@
   </div> --}}
 
   <div id="carouselExample" class="carousel slide" data-bs-ride="carusel">
-    <div class="container-fluid">
+    <div class="container-fluid" id="container-slider" >
      <ol class="carousel-indicators">
       <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" ></li>
       <li data-bs-target="#carouselExample" data-bs-slide-to="1" ></li>
@@ -30,13 +30,13 @@
      </ol>
      <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="{{ global_asset($tenant->banner1) }}" class="d-block w-100" style="height: 350px;" alt="...">
+        <img src="{{ global_asset($tenant->banner1) }}" class="d-block w-100" id="slider1" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="{{ global_asset($tenant->banner2) }}" class="d-block w-100" style="height: 350px;" alt="...">
+        <img src="{{ global_asset($tenant->banner2) }}" class="d-block w-100" id="slider2" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="{{ global_asset($tenant->banner3) }}" class="d-block w-100" style="height: 350px;" alt="...">
+        <img src="{{ global_asset($tenant->banner3) }}" class="d-block w-100" id="slider3" alt="...">
       </div>
     </div>
     <a class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

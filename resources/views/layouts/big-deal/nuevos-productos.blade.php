@@ -13,7 +13,7 @@
     <div class="row m-3">
       <div class="col pr-0 product-slide-5 product-m no-arrow">
         @foreach($productosNuevos as $producto)
-        {{-- @include("layouts.$plantilla.producto") --}}
+         @include("layouts.$plantilla.producto")
         <?php $index++; ?>
         @if($index % 6 == 0)
       </div>

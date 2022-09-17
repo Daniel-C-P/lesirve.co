@@ -77,8 +77,8 @@
         <div class="row">
           <div class="col-md-6">
             <div class="footer-left">
-              <p>2019-20 Copy Right by Themeforest Powered by pixel strap</p>
             </div>
+            <p>DESDE 2017 HASTA EL 2022 COPY RIGHT BY SU SITIO WEB YA</p>
           </div>
           <div class="col-md-6">
             <div class="footer-right">

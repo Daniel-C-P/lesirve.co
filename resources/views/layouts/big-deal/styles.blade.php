@@ -15,6 +15,8 @@
 <!--Slick slider css-->
 <link rel="stylesheet" type="text/css" href="{{ global_asset('css/general/slick.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ global_asset('css/general/slick-theme.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ global_asset('css/tenant/cliente/slider.css') }}">
+
 
 <!--Animate css-->
 <link rel="stylesheet" type="text/css" href="{{ global_asset('css/general/animate.css') }}">

@@ -108,8 +108,18 @@ class TenantController extends Controller
             'id_categoria' => $cat->id,
             'nombre' => "Producto $i",
             'precio' => rand(10000, 52000),
-            'descripcion_corta' => 'Producto generado de ejemplo',
-            'descripcion_larga' => 'Producto cargado automaticamente para la demostración de la lista de productos',
+            'descripcion_corta' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+              deserunt mollit anim id est laborum.',
+            'descripcion_larga' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+              deserunt mollit anim id est laborum.',
             'imagen_1' => 'img/producto-default.png',
             'valor_descuento' => 0,
           ]);

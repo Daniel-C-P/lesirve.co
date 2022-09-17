@@ -29,9 +29,10 @@ class HomeTenantController extends Controller
     $mediosPagos = MediosPago::where('habilitado', true)
       ->paginate();
     $productosNuevos = Producto::orderBy('created_at', 'desc')
-      ->limit(5)
+      ->limit(10)
       ->get();
     $cantidad_carrito = 0;
+    $productosNuevos = [];
     return view(
       'index',
       compact(

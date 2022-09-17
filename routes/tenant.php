@@ -51,10 +51,12 @@ Route::middleware([
   })->name('recuperar-cuenta');
 
   Route::get('descuentos', [ProductoController::class, 'listarDescuentos'])->name('descuentos');
+  Route::post('obtener-transacciones', [CompraController::class, 'obtenerTransacciones'])->name('tenant.compras.transacciones');
 
   Route::middleware('auth.tenant.cliente:cliente')
     ->group(function () {
       Route::post('realizar-comprar', [CompraController::class, 'realizarCompra'])->name('tenant.form.compra');
+      Route::post('realizar-comprar-Medio', [CompraController::class, 'compraMedioPago'])->name('tenant.form.compra.medio');
       Route::post('finalizar-comprar', [CompraController::class, 'ordenar'])->name('tenant.comprar.ordenar');
       Route::get('mis-compras', [CompraController::class, 'misCompras'])->name('tenant.compras.cliente');
       Route::post('agregar-carrito', [CarroCompraController::class, 'store']);
@@ -94,6 +96,7 @@ Route::middleware([
       Route::resource('cupones', CuponeController::class);
       Route::resource('medios-pagos', MediosPagoController::class)->except(["update"]);
       Route::post('medios-pago', [MediosPagoController::class, 'update'])->name('medios-pagos.update');
+
       Route::patch('estados/pagos/{pago}', [EstadosPagoController::class, 'update'])->name('tenant.estados.pagos.update');
       Route::resource('estados/pagos', EstadosPagoController::class)
         ->names('tenant.estados.pagos');

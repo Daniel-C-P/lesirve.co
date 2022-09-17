@@ -84,6 +84,7 @@ class VentasProductoController extends Controller
     {
         $ventasProducto = VentasProducto::find($id);
         $clientes = Cliente::pluck('correo', 'id');
+        dd($clientes);
         $estadosPagos = EstadosPago::pluck('descripcion', 'id');
         $estadosVentas = EstadosVenta::pluck('descripcion', 'id');
         $tiposPagos = TiposPago::pluck('descripcion', 'id');

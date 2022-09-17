@@ -19,10 +19,10 @@ $formasPago = PlantillaConfigController::obtenerMediosPago();
             <h4>Completa todos los campos para continuar</h4>
           </div>
           <div class="checkout-body ">
-            <form class="checkout-form" method="POST" action="{{ route('tenant.comprar.ordenar') }}">
+            <form class="checkout-form" method="POST" action="{{ route('tenant.form.compra.medio') }}">
               @csrf
-              <input type="hidden" name="productos" value="{{ json_encode($productos) }}">
-              <input type="hidden" name="cliente[id]" value="{{ auth('cliente')->user()->id }}">
+              <input type="hidden" id="productos" name="productos" value="{{ json_encode($productos) }}">
+              <input type="hidden" id="cliente[id]" name="cliente[id]" value="{{ auth('cliente')->user()->id }}">
               <!-- chek menu bar -->
               <ul class="menu-bar">
                 <li class="active" id="personal">
@@ -76,29 +76,13 @@ $formasPago = PlantillaConfigController::obtenerMediosPago();
               </div>
               <div class="checkout-fr-box">
                 <div class="form-card">
-                  <h3 class="form-title">Información de Pago</h3>
-                  <div class="accordion" id="acordeonPagos">
-                    @foreach($formasPago as $formaPago)
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="formaPago{{ $formaPago->nombre }}">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#formaPago{{ $formaPago->id }}" aria-expanded="true" aria-controls="collapseOne">
-                          {{ $formaPago->nombre }}
-                        </button>
-                      </h2>
-                      <div id="formaPago{{ $formaPago->id }}" class="accordion-collapse collapse" aria-labelledby="formaPago{{ $formaPago->nombre }}" data-bs-parent="#acordeonPagos">
-                        <div class="accordion-body">
-                          @if($formaPago->cuenta != null)
-                          <strong>Cuenta: </strong> {{ $formaPago->cuenta }}<br />
-                          <strong>Tipo de cuenta: </strong> {{ $formaPago->tipo_cuenta }}
-                          @endif
-                        </div>
-                      </div>
-                    </div>
-                    @endforeach
-                  </div>
+                  <h3 class="form-title"> Formas de Pago</h3>
+
+                  @include('tenant.pages.ventas.form')
+
+
                 </div>
                 <button type="button" name="previous" class="previous btn btn-normal ">Anterior</button>
-                <button type="submit" name="{{ $esCarroCompras ? 'btnCarritoCompras' : '' }}" class=" btn btn-normal next action-button">Siguiente</button>
               </div>
             </form>
           </div>
@@ -113,4 +97,5 @@ $formasPago = PlantillaConfigController::obtenerMediosPago();
 @section('js')
 <!-- Checkout js-->
 <script src="{{ global_asset('js/general/checkout.js') }}"></script>
+<script src="{{ global_asset('js/tenant/cliente/mediosdepago.js') }}"></script>
 @stop

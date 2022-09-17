@@ -23,8 +23,9 @@ class MediosPagoController extends Controller
   {
     $mediosPagos = MediosPago::paginate();
 
-    return view('tenant.admin.medios-pago.index', compact('mediosPagos'))
-      ->with('i', (request()->input('page', 1) - 1) * $mediosPagos->perPage());
+
+    // dd($mediosPagos[0]['cuenta']);
+    return view('tenant.admin.medios-pago.index', compact('mediosPagos'));
   }
 
   /**
@@ -83,11 +84,46 @@ class MediosPagoController extends Controller
    * @param  MediosPago $mediosPago
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, MediosPago $mediosPago)
+  public function update(Request $request, MediosPago $medioP)
   {
+    $medioP = Mediospago::where('nombre','wompi')
+                     ->count();
+    if ($medioP == 0) {
 
-  }return($request)
+        $medioPago = new MediosPago;
+        $medioPago->nombre = 'wompi';
+        if ($request['chec'] == 0) {
+            $medioPago->logo = '';
+            $medioPago->habilitado = 0;
+            $medioPago->cuenta = '';
+        }else{
+            $medioPago->logo = $request['prv'];
+            $medioPago->habilitado = 1;
+            $medioPago->cuenta = $request['pub'];
+        }
+        $medioPago->save();
 
+        return($medioPago);
+    }elseif ($medioP == 1) {
+        $medioP = Mediospago::where('nombre','wompi')
+                ->get();
+        $medioP = Mediospago::findOrFail($medioP[0]["id"]);
+
+        if ($request['chec'] == 0) {
+            $medioP->habilitado = 0;
+        }else{
+            return(array_key_exists('chec',$request));
+            $medioP->logo = array_key_exists('prv', $request ) ? $request['prv'] : $medioP->logo;
+
+            $medioP->habilitado = 1;
+            $medioP->cuenta = array_key_exists('pub', $request) ?  $medioP->cuenta : $request['pub'] ;
+        }
+        $medioP->save();
+
+        return($medioP);
+    }
+    return($request);
+  }
   /**
    * @param int $id
    * @return \Illuminate\Http\RedirectResponse

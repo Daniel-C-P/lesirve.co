@@ -72,7 +72,7 @@ $plantilla = PlantillaConfigController::obtenerConfiguracion()->id_plantilla;
                 <div class="qty-box">
                   <div class="input-group">
                     <button type="button" class="qty-minus"></button>
-                    <input class="qty-adj form-control" type="number" value="1" name="productos[0][cantidad]" />
+                    <input class="qty-adj form-control" type="number" value="1" name="productos[0][cantidad]"/>
                     <button type="button" class="qty-plus"></button>
                   </div>
                 </div>
