@@ -16,21 +16,22 @@ $plantilla = PlantillaConfigController::obtenerConfiguracion()->id_plantilla;
 
 <!--media banner start-->
 <section class="section-big-pb-space ratio_square product">
-  <div class="custom-container">
-    <div class="row m-3">
-      <div class="col pr-0 product-slide-5 product-m no-arrow">
-        @foreach($productos as $producto)
-        @include("layouts.$plantilla.producto")
-        <?php $index++; ?>
-        @if($index % 6 == 0)
+    {{-- <div class="custom-container"> --}}
+      <div class="row m-3">
+        <div class="col pr-0 product-slide-5 product-m no-arrow">
+          @foreach($productos as $producto)
+           @include("layouts.$plantilla.producto")
+           <?php $index++?>
+          @if($index % 6 == 0)
+        </div>
       </div>
-    </div>
-    <div class="row m-3">
-      <div class="col pr-0 product-slide-5 product-m no-arrow">
-        @endif
-        @endforeach
+      <div class="row m-3">
+        <div class="col pr-0 product-slide-5 product-m no-arrow">
+            <?php $index++;?>
+          @endif
+          @endforeach
+        </div>
       </div>
-    </div>
-</section>
+  </section>
 <!--media banner end-->
 @stop

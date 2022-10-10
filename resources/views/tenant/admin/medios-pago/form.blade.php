@@ -9,18 +9,26 @@
     <div class="form-group">
 
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheck" checked>
+            @if (count($mediosPagos) == 0)
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheck" name="chec">
+            @else
+              @if ($mediosPagos[0]['habilitado'] == 1)
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheck" name="chec" checked>
+              @else
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheck" name="chec" >
+              @endif
+            @endif
             <label class="form-check-label" for="flexSwitchCheckDefault">Medios de Pago</label><br>
         </div>
 
       <label for="exampleInputEmail1">WOMPI</label>
       @if (count($mediosPagos) == 0)
-      <input type="text" class="form-control" id="wompikey" aria-describedby="emailHelp" placeholder="inserte su llave publica"> <br>
-      <input type="text" class="form-control" id="wompikeypv" aria-describedby="emailHelp" placeholder="inserte su llave prv">
+      <input type="text" class="form-control" id="wompikey" name="wompikey" aria-describedby="emailHelp" placeholder="inserte su llave publica"> <br>
+      <input type="text" class="form-control" id="wompikeypv" name="wompikeypv" aria-describedby="emailHelp" placeholder="inserte su llave prv">
 
       @else
-      <input type="text" class="form-control" id="wompikey" aria-describedby="emailHelp" placeholder="inserte su llave publica" value="{{$mediosPagos[0]['cuenta']}}"> <br>
-      <input type="text" class="form-control" id="wompikeypv" aria-describedby="emailHelp" placeholder="inserte su llave privada" value="{{$mediosPagos[0]['logo']}}"><br>
+      <input type="text" class="form-control" id="wompikey" name="wompikey" aria-describedby="emailHelp" placeholder="inserte su llave publica" value="{{$mediosPagos[0]['cuenta']}}"> <br>
+      <input type="text" class="form-control" id="wompikeypv" name="wompikeypv" aria-describedby="emailHelp" placeholder="inserte su llave privada" value="{{$mediosPagos[0]['logo']}}"><br>
       @endif
       <p>copie el siguinete link y coloquelo en la seccion url eventos</p>
       <input type="text" readonly class="form-control"  readonly id="urlEventos" aria-describedby="emailHelp" placeholder="inserte su llave privada" value="{{route('tenant.compras.transacciones')}}">

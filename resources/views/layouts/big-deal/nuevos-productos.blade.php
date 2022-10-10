@@ -2,7 +2,7 @@
 
 <!--title start-->
 <div class="title4">
-  <h4>nuevos <span>productos</span></h4>
+  <h4>nuestros <span>productos</span></h4>
 </div>
 <!--title end-->
 

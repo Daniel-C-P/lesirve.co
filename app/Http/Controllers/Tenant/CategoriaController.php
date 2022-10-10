@@ -18,6 +18,15 @@ class CategoriaController extends Controller
   public function listarProductos($categoria)
   {
     $productos = Categoria::where('categoria', $categoria)->first()->productos;
+    // $var = '';
+    // $index = 1;
+    // foreach ($productos as $key) {
+    //     $index++;
+    //     $var = $var.','.$index % 6;
+    //     $index++;
+
+    // }
+    //  dd($var);
     return view(
       "tenant.pages.productos.categoria",
       compact(
@@ -101,7 +110,7 @@ class CategoriaController extends Controller
   public function update(Request $request, Categoria $categoria)
   {
     request()->validate(Categoria::$rules);
-    
+
     $request['destacada'] = isset($request['destacada']);
     $categoria->update($request->all());
 
@@ -122,8 +131,8 @@ class CategoriaController extends Controller
     if ($productos > 0) {
       return redirect()->route('categorias.index')
         ->with('error', 'Categoria with products');
-    }  
-    
+    }
+
     $categoria = Categoria::find($id)->delete();
 
     return redirect()->route('categorias.index')

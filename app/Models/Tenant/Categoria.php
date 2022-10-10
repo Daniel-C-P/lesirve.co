@@ -19,7 +19,7 @@ class Categoria extends Model
 {
     public $timestamps = false;
     static $rules = [
-		'categoria' => 'required|max:20',
+		'categoria' => 'required|max:30',
 		'descripcion' => 'required|max:60',
     ];
 

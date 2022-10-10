@@ -1,4 +1,8 @@
 <!-- footer start -->
+@if($tenant->whatsapp != null)
+ <a href="https://api.whatsapp.com/send?phone={{ $tenant->whatsapp }}" class="whatsapp" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
+
+@endif
 <footer>
   <div class="footer1 ">
     <div class="container">
@@ -22,9 +26,6 @@
                   @endif
                   @if($tenant->twitter != null)
                   <li><a href="{{ $tenant->twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                  @endif
-                  @if($tenant->whatsapp != null)
-                  <li><a href="{{ $tenant->whatsapp }}" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
                   @endif
                   @if($tenant->instagram != null)
                   <li><a href="{{ $tenant->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a></li>

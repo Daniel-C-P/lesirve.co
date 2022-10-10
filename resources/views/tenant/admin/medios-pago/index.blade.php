@@ -6,10 +6,10 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
-            <form action="{{route('medios-pagos.update')}}" method="post">
-                @csrf
+            {{-- <form action="{{route('medios-pagos.update')}}" method="post"> --}}
+                {{-- @csrf --}}
                 @include('tenant.admin.medios-pago.form')
-            </form>
+            {{-- </form> --}}
           </div>
         </div>
       </div>

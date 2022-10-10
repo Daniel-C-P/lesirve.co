@@ -20,7 +20,7 @@
       </div>
       {!! $errors->first('destacada', '<div class="invalid-feedback">:message</div>') !!}
     </div>
-    <div class="box-footer mt20">
+    <div class="box-footer mt30">
         <button type="submit" class="btn btn-primary btn-block">Enviar</button>
     </div>
 </div>

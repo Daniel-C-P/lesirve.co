@@ -86,13 +86,15 @@ class MediosPagoController extends Controller
    */
   public function update(Request $request, MediosPago $medioP)
   {
+    // dd($request);
+    $request = $request->all();
     $medioP = Mediospago::where('nombre','wompi')
                      ->count();
     if ($medioP == 0) {
 
         $medioPago = new MediosPago;
         $medioPago->nombre = 'wompi';
-        if ($request['chec'] == 0) {
+        if ($request['chec'] == null) {
             $medioPago->logo = '';
             $medioPago->habilitado = 0;
             $medioPago->cuenta = '';
@@ -109,18 +111,16 @@ class MediosPagoController extends Controller
                 ->get();
         $medioP = Mediospago::findOrFail($medioP[0]["id"]);
 
-        if ($request['chec'] == 0) {
+        if ($request['chec'] == null) {
             $medioP->habilitado = 0;
         }else{
-            return(array_key_exists('chec',$request));
             $medioP->logo = array_key_exists('prv', $request ) ? $request['prv'] : $medioP->logo;
-
             $medioP->habilitado = 1;
-            $medioP->cuenta = array_key_exists('pub', $request) ?  $medioP->cuenta : $request['pub'] ;
+            $medioP->cuenta = array_key_exists('pub', $request) ? $request['pub'] : $medioP->cuenta;
         }
         $medioP->save();
 
-        return($medioP);
+        return('ok');
     }
     return($request);
   }

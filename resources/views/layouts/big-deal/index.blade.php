@@ -111,10 +111,10 @@ if (isset($categorias) && count($categorias) > 0) {
 
   @section('content')
   @include('layouts.big-deal.slider')
-  @if (count($servicios))
+  @if (isset($servicios) && count($servicios))
      @include('layouts.big-deal.servicios')
   @endif
-  @if (count($productosNuevos))
+  @if (isset($productosNuevos)&& count($productosNuevos))
      @include('layouts.big-deal.nuevos-productos')
   @endif
   @include('layouts.big-deal.banner-two')
