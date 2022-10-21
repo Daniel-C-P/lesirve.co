@@ -19,10 +19,12 @@ class ProductoController extends Controller
   use Template;
 
   public function vistaComprar(Request $request){
+    $tenant = PlantillaConfigController::obtenerConfiguracion() ?? $valuesDefault;
+    $formasPagos = PlantillaConfigController::obtenerMediosPago();
     $producto = Producto::find($request->id);
     return view(
       "tenant.pages.productos.comprar",
-      compact('producto')
+      compact('producto','formasPagos', 'tenant',)
     );
   }
 

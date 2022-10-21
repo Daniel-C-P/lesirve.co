@@ -1,4 +1,3 @@
-
 var btnWompy = document.getElementById("btnWompy");
 var flexSwitchCheck = document.getElementById("flexSwitchCheck");
 var alert = document.getElementById("alert");
@@ -76,8 +75,6 @@ function wompi_key_check() {
 
 }
 
-
-
 function cargardatos(keys){
     const options = {
         method: 'POST',
@@ -97,3 +94,4 @@ function cargardatos(keys){
         )
          .catch(err => console.error(err));
 }
+

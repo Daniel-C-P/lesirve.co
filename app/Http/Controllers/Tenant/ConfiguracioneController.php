@@ -121,7 +121,7 @@ class ConfiguracioneController extends Controller
 
             $ban =  Banners::find($data[$a]);
             $ban->URL_funcion = $data[$b];
-        	  $ban->titulo_imagen = $data[$c];
+        	$ban->titulo_imagen = $data[$c];
             $ban->texto_boton = $data[$d];
 
             $f = array_key_exists($e, $data);

@@ -19,6 +19,15 @@
                     <img src="{{ global_asset($tenant->logo) }}" class="img-fluid" alt="logo">
                   </a>
                 </div>
+                <ul class="list-group list-group-flush">
+                    @if(isset($categorias))
+                       @foreach($categorias as $categoria)
+                            <li>
+                                <a href="{{url('categorias/'.$categoria->categoria)}}">{{ $categoria->categoria}}</a>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
                 <p>{{ $tenant->descripcion }}</p>
                 <ul class="sosiyal">
                   @if($tenant->facebook != null)
@@ -37,6 +46,7 @@
               </div>
             </div>
             <div class="footer-box">
+
               <!-- <div class="footer-title">
                   <h5></h5>
                 </div>

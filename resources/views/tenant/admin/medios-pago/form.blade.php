@@ -36,3 +36,4 @@
       <small id="emailHelp" class="form-text text-muted"> Dirijase para su cuenta de  wompi y copie su llave publica</small>
     </div>
     <button type="submit" class="btn btn-primary" id="btnWompy"> comprobar llave </button>
+

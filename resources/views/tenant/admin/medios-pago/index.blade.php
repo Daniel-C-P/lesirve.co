@@ -18,3 +18,4 @@
 </div>
 <script src="{{ global_asset('js/tenant/admin/mediosdepago.js') }}"></script>
 @endsection
+

@@ -20,7 +20,7 @@ class CompraController extends Controller
   {
     $user = auth('cliente')->user()->id;
     $compras = VentasProducto::where('id_cliente', $user)->orderBy('created_at', 'desc')->paginate();
-    // return view("tenant.pages.ventas.mis-compras", compact('compras'));
+    return view("tenant.pages.ventas.mis-compras", compact('compras'));
   }
 
   public function obtenerTransacciones(Request $request)
@@ -330,7 +330,8 @@ class CompraController extends Controller
 
   }
 
-  public function generarReferencia(){
+  public function generarReferencia()
+  {
 
     $referencia = uniqid();
     $tipPag = TiposPago::where('descripcion',$referencia)
@@ -342,7 +343,7 @@ class CompraController extends Controller
   }
 
   public function crearTranssaccionCardNeq ($payMet,$datMer,$paySour,$productos,$prvkey,$url)
-    {
+  {
         $amontCent = 0;
         foreach ($productos as $producto) {
             $amontCent += ($producto['precio'] * $producto['cantidad']);
@@ -383,9 +384,10 @@ class CompraController extends Controller
             return view("tenant.pages.ventas.orden-rechazada");
         }
 
-    }
+  }
 
-public function crearTranssaccionBantraPse ($payMet,$datMer,$productos,$prvkey,$url){
+  public function crearTranssaccionBantraPse ($payMet,$datMer,$productos,$prvkey,$url)
+  {
     $amontCent = 0;
     foreach ($productos as $producto) {
             $amontCent += ($producto['precio'] * $producto['cantidad']);
@@ -430,6 +432,6 @@ public function crearTranssaccionBantraPse ($payMet,$datMer,$productos,$prvkey,$
     }else{
         return view("tenant.pages.ventas.orden-rechazada");
     }
-}
+  }
 
 }

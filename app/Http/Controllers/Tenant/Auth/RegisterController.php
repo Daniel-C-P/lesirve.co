@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tenant\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Tenant\PlantillaConfigController;
 use App\Models\Tenant\Cliente;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,9 @@ class RegisterController extends Controller
   use RegistersUsers;
 
   protected function showRegisterForm(){
+    $plantilla = PlantillaConfigController::obtenerConfiguracion()->id_plantilla;
     $title = 'Iniciar sesión';
-    return view('tenant.auth.clientes.register', compact('title'));
+    return view('tenant.auth.clientes.register', compact('title','plantilla'));
   }
 
   /**

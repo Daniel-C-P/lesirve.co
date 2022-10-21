@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="{{ global_asset('css/general/slick-theme.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ global_asset('css/tenant/cliente/slider.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ global_asset('css/tenant/cliente/whasapp.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ global_asset('css/tenant/cliente/header.css') }}">
 
 
 

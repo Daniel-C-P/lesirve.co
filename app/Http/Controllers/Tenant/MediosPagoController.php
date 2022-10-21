@@ -137,3 +137,4 @@ class MediosPagoController extends Controller
       ->with('success', 'MediosPago deleted successfully');
   }
 }
+

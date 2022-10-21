@@ -168,7 +168,7 @@ $menus = Menu::where('visible', true)->paginate();
     <div class="custom-container">
       <div class="row">
         <div class="col-12">
-          <div class="category-contain">
+          <div class="category-contain" id="category-contain">
             <div class="category-left">
               <div class="header-category3">
                 <a class="category-toggle "><i class="ti-layout-grid2-alt"></i>Comprar por categoria</a>
@@ -189,48 +189,6 @@ $menus = Menu::where('visible', true)->paginate();
                   </li>
                   @endforeach
                   @else
-                  <li>
-                    <a href="">Horses</a>
-                  </li>
-                  <li>
-                    <a href="">dogs</a>
-                  </li>
-                  <li>
-                    <a href="">cats</a>
-                  </li>
-                  <li>
-                    <a href="">rabbit</a>
-                  </li>
-                  <li>
-                    <a href="">Goldfish</a>
-                  </li>
-                  <li>
-                    <a href="">baby products</a>
-                  </li>
-                  <li>
-                    <a href="">Green iguana</a>
-                  </li>
-                  <li>
-                    <a href="">parrot</a>
-                  </li>
-                  <li>
-                    <a href="">Barbet</a>
-                  </li>
-                  <li>
-                    <a href="">Bandicoot</a>
-                  </li>
-                  <li>
-                    <a href="">Poochon</a>
-                  </li>
-                  <li>
-                    <a href="">Rottle</a>
-                  </li>
-                  <li>
-                    <a href="">Scottish Deerhound</a>
-                  </li>
-                  <li>
-                    <a href="">Texas Heeler</a>
-                  </li>
                   @endif
                 </ul>
               </div>
@@ -251,7 +209,7 @@ $menus = Menu::where('visible', true)->paginate();
                     </li>
                     <!--HOME-->
                     <li>
-                      <a class="dark-menu-item" href="/">inicio</a>
+                      <a class="dark-menu-item" id="inicio" href="/">inicio</a>
                     </li>
                     <!--HOME-END-->
                     @foreach($menus as $menu)

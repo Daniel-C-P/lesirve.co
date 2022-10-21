@@ -1,4 +1,4 @@
-@extends("layouts.big-deal.index")
+@extends("layouts.$plantilla.index")
 
 @section('content')
 

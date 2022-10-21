@@ -39,6 +39,8 @@ $sale = isset($sale);
         <span>
           ${{ number_format($producto->precio, 0, ',', '.') }}
         </span>
+        @elseif ($producto->precio <= 0)
+        consaultar
         @else
         ${{ number_format($producto->precio, 0, ',', '.') }}
         @endif
