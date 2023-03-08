@@ -32,6 +32,7 @@ class HomeTenantController extends Controller
       ->limit(10)
       ->get();
     $cantidad_carrito = 0;
+
     return view(
       'index',
       compact(

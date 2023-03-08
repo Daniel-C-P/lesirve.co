@@ -18,7 +18,7 @@ $plantilla = PlantillaConfigController::obtenerConfiguracion()->id_plantilla;
 @section('content')
 <!-- section start -->
 <form action="{{ route('tenant.form.compra') }}" method="post">
-
+@csrf
   <section class="section-big-pt-space b-g-light">
     <div class="collection-wrapper">
       <div class="custom-container">
@@ -100,9 +100,9 @@ $plantilla = PlantillaConfigController::obtenerConfiguracion()->id_plantilla;
                 <h6 class="product-title">cantidad</h6>
                 <div class="qty-box">
                     <div class="input-group">
-                        <button class="button minus decrement  btn-number" type="button" disabled="disabled" data-type="minus" data-field="quant[1]"></button>
-                        <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10" name="productos[0][cantidad]">
-                        <button class="button plus increment  btn-number" type="button" btn-number" data-type="plus" data-field="quant[1]"></button>
+                        <button class="button minus decrement  btn-number" type="button"  data-type="minus" data-field="quant[1]" id="min"></button>
+                        <input type="text"class="form-control input-number" value="1" min="1" max="10" name="productos[0][cantidad]" id="cantidad">
+                        <button class="button plus increment  btn-number" type="button" data-type="plus" data-field="quant[1]" id="max"></button>
                     </div>
                     {{-- <span class="input-group-prepend">
                         <button type="button" class="btn btn-outline-secondary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
@@ -121,12 +121,13 @@ $plantilla = PlantillaConfigController::obtenerConfiguracion()->id_plantilla;
                     <i class="fa fa-shopping-cart"></i>
                     Agregar al carrito
                   </button>
-                  @csrf
+
                   <input type="hidden" name="productos[0][id]" value="{{ $producto->id }}">
                   <input type="hidden" name="productos[0][precio]" value="{{ $producto->precio }}">
                   <button type="submit" id="cartEffect" class="btn cart-btn btn-normal tooltip-top" data-tippy-content="Comprar">
                     <i class="fa fa-shopping-basket"></i>
                     Comprar ahora
+
                   </button>
                 </div>
               </div>

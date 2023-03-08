@@ -17,6 +17,11 @@ $cantidadCarrito = count($carroCompras);
 $total = 0;
 
 $menus = Menu::where('visible', true)->paginate();
+
+//dividir categorias
+$parte1 = '';
+$parte2 = '';
+
 ?>
 <!--header start-->
 <header id="stickyheader" class="header-style2">
@@ -60,7 +65,7 @@ $menus = Menu::where('visible', true)->paginate();
               </div>
             </div>
             <div class="header-search ajax-search the-basics">
-              <div class="input-group">
+              <div class="input-group" style="flex-wrap: nowrap">
                 <div class="input-group-text">
                   <select id="categoriaBuscar">
                     <option value="all">todos</option>
@@ -220,7 +225,29 @@ $menus = Menu::where('visible', true)->paginate();
                         @foreach($menu->categorias as $categoriaMenu)
                         <li>
                           <a href='{{ url("categorias/$categoriaMenu->categoria") }}'>
-                            {{ $categoriaMenu->categoria }}
+                            @php
+
+            $segmentacion = str_split($categoriaMenu->categoria);
+            $parte1 = '';
+            $parte2 = '';
+            $espacio = 0;
+            $indice = 0;
+            $espacio = 0;
+            $array = array();
+            foreach ($segmentacion as $segmento) {
+                $espacio += $segmento == ' ' ? 1 : 0 ;
+                if ($espacio < 3 ) {
+                    $parte1 = $parte1.$segmento;
+                    // dd($segmentacion);
+                }else if ($espacio >= 3) {
+                    $parte2 = $parte2.$segmento;
+                }
+            $indice += 1 ;
+            }
+
+
+                            @endphp
+                            {{ $parte1 }} <br> {{$parte2}}
                           </a>
                         </li>
                         @endforeach

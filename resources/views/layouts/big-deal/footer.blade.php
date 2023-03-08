@@ -1,3 +1,18 @@
+<?php
+
+use App\Models\Tenant\Categoria;
+use App\Models\Tenant\Producto;
+
+  $catDestacadas = Categoria::where('destacada', true)->limit(5)->get();
+  if(count($catDestacadas) > 0){
+    $pCat = str_replace(' ', '_', $catDestacadas[0]->categoria);
+  }
+  $catsProds = array();
+  foreach($catDestacadas as $catDestacada){
+    $catsProds[$catDestacada->categoria] = Producto::where('id_categoria', $catDestacada->id)->limit(10)->get();
+  }
+?>
+
 <!-- footer start -->
 @if($tenant->whatsapp != null)
  <a href="https://api.whatsapp.com/send?phone={{ $tenant->whatsapp }}" class="whatsapp" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
@@ -6,10 +21,9 @@
 <footer>
   <div class="footer1 ">
     <div class="container">
-      <div class="row">
-        <div class="col-12">
+        <div class="row-cols-1 ">
           <div class="footer-main">
-            <div class="footer-box">
+            <div class="col-md-3 mx-auto">
               <div class="footer-title mobile-title">
                 <h5>acerca</h5>
               </div>
@@ -19,15 +33,7 @@
                     <img src="{{ global_asset($tenant->logo) }}" class="img-fluid" alt="logo">
                   </a>
                 </div>
-                <ul class="list-group list-group-flush">
-                    @if(isset($categorias))
-                       @foreach($categorias as $categoria)
-                            <li>
-                                <a href="{{url('categorias/'.$categoria->categoria)}}">{{ $categoria->categoria}}</a>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
+
                 <p>{{ $tenant->descripcion }}</p>
                 <ul class="sosiyal">
                   @if($tenant->facebook != null)
@@ -45,22 +51,24 @@
                 </ul>
               </div>
             </div>
-            <div class="footer-box">
-
-              <!-- <div class="footer-title">
-                  <h5></h5>
-                </div>
+            <div class="col-md-3 mx-auto">
                 <div class="footer-contant">
-                  <ul>
-                    <li><a href="javascript:void(0)">about us</a></li>
-                    <li><a href="javascript:void(0)">contact us</a></li>
-                    <li><a href="javascript:void(0)">terms &amp; conditions</a></li>
-                    <li><a href="javascript:void(0)">returns &amp; exchanges</a></li>
-                    <li><a href="javascript:void(0)">shipping &amp; delivery</a></li>
-                  </ul>
+                    <ul class="list-group list-group-flush" style="align-items: center">
+                        @foreach($catDestacadas as $categoria)
+                            @php
+                                $nomCat = str_replace(' ', '_', $categoria->categoria)
+                            @endphp
+                                <li class="{{ $nomCat == $pCat ? 'current' : '' }}">
+                                    <a href="{{url('categorias/'.$categoria->categoria)}}">{{ $categoria->categoria }}</a>
+                                </li>
+                        @endforeach
+                    </ul>
+                  <br>
                 </div>
-              </div> -->
-              <div class="footer-box">
+              </div>
+            <div class="col-md-3 mx-auto">
+
+              <div class="col-md-3 mx-auto">
                 <div class="footer-title">
                   <h5>contactanos</h5>
                 </div>
@@ -81,7 +89,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
     <div class="subfooter footer-border">
       <div class="container">
@@ -94,9 +101,15 @@
           <div class="col-md-6">
             <div class="footer-right">
               <ul class="payment">
-                @foreach($mediosPagos as $medioPago)
-                <li><a href="javascript:void(0)"><img src="{{ global_asset($medioPago->logo) }}" style="width: 50px;" class="img-fluid" alt="{{ $medioPago->nombre }}" title="{{ $medioPago->nombre }}"></a></li>
-                @endforeach
+                @if (isset($mediosPagos) && $mediosPagos[0]['habilitado'] == 1 )
+                    <embed type="image/svg+xml" src="{{ global_asset('images/logos/amercan-express.svg') }}" height="30px">
+                    <embed type="image/svg+xml" src="{{ global_asset('images/logos/boton-bancolombia.svg') }}" height="30px">
+                    <embed type="image/svg+xml" src="{{ global_asset('images/logos/cash.svg') }}" height="30px">
+                    <embed type="image/svg+xml" src="{{ global_asset('images/logos/mastercard.svg') }}" height="30px" >
+                    <embed type="image/svg+xml" src="{{ global_asset('images/logos/nequi.svg') }}" height="30px">
+                    <embed type="image/svg+xml" src="{{ global_asset('images/logos/pse.svg') }}" height="30px">
+                    <embed type="image/svg+xml" src="{{ global_asset('images/logos/visa.svg') }}" height="30px">
+                 @endif
               </ul>
             </div>
           </div>
